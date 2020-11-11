@@ -1,0 +1,47 @@
+const getUserChoice = userInput=>{
+  userInput = userInput.toLowerCase();
+  if(userInput==="rock"||userInput==="scissors"||userInput==="paper"||userInput==="bomb"){
+    return userInput
+  }
+  return ("invalid input,please try again")
+}
+
+const getComputerChoice =()=>{
+  const randomNumber = Math.floor(Math.random()*3)
+  if( randomNumber===0) return "paper"
+  if( randomNumber===1) return "rock"
+  if( randomNumber===2) return "scissors"
+}
+
+
+const determineWinner = (userChoice,computerChoice)=>{
+  if(userChoice==="bomb") return "win"
+  if(userChoice===computerChoice) return "tie"
+  if(userChoice==="rock"){
+    if(computerChoice==="paper") return "lost"
+    return "win"
+  }
+  if(userChoice==="paper"){
+    if(computerChoice==="scissors") return "lost"
+    return "win"
+  }
+  if(userChoice==="scissors"){
+    if(computerChoice==="rock") return "lost"
+    return "win"
+  }
+}
+
+
+
+//start the game
+const playGame = ()=>{
+  const userChoice = getUserChoice("bomb")
+  const computerChoice = getComputerChoice()
+  console.log(`compuetr choice =>> ${computerChoice}`)
+  console.log(`your choice =>> ${userChoice}`)
+  const result =  determineWinner(userChoice,computerChoice)
+  console.log(result)
+}
+
+playGame()
+
